@@ -1,4 +1,10 @@
 const foo = 1;
 const bar = 'hello';
 
-export { foo, bar };
+function capture() {
+  const self = this;
+
+  return self;
+}
+
+export { foo, bar, capture };

@@ -131,6 +131,30 @@ All scripts run from the repository root.
 | `pnpm format`                                                 | Prettier across the repository                  |
 | `pnpm commitlint`                                             | Validate commit messages (used by husky and CI) |
 
+## Adding a rule
+
+Rules are added test-first, one at a time, and snapshots are regenerated only at the very end. The order below is not a suggestion — steps 5 and 6 exist because we got both of them wrong at least once.
+
+1. **Decide whether the rule belongs in this package at all.** It does **not** if its value depends on project paths, aliases, domain wrappers, or a specific component library — those belong in the consumer's own `eslint.config`, layered on top of our presets. Worked examples we rejected: `import/order` (almost all of its value comes from ~100 lines of project-specific alias `pathGroups`, and a groups-only version would just be overridden by every consumer), `no-restricted-globals` (its entries point at one project's `@shared/lib/regexp`), and the jQuery-selector and design-token rules (bound to one codebase's jQuery usage and to Kommo design tokens). A rule whose generic form is meaningless without project-specific values is not added, not even disabled.
+2. **Pick the preset.** `base` for language-level rules that hold for plain JavaScript; `typescript` for anything that reads TS syntax; `react` for JSX.
+
+   The `typescript` preset has **two** rule blocks, and choosing the wrong one is the most expensive mistake in this list. `@kommo-crm/eslint-config/typescript/rules` is unscoped and therefore applies to `.js` too; `@kommo-crm/eslint-config/typescript/ts-only` is scoped with `files: TS_FILES`. The test is: **does the rule listen to any node type espree emits?** If it only matches TS-only nodes (`TSTypeReference`, `PropertyDefinition[definite=true]`, …) it is inert on JavaScript and can live in the all-files block — `@typescript-eslint/array-type` is there for exactly that reason. If it matches nodes espree also produces — `@typescript-eslint/explicit-function-return-type` matches `FunctionDeclaration` and `ArrowFunctionExpression` — it **must** go in the `files: TS_FILES` block, or it fires on every function in every `.js` file the consumer owns.
+
+3. **Write the failing test first.** Preset rules go in `packages/eslint-config/__tests__/presets/*.test.ts` (extend the matching `__tests__/fixtures/invalid.*` with a violation and assert `lintFixture` reports the rule id at the expected severity). `kommo/no-restricted-syntax` selectors go in `packages/eslint-config/__tests__/rules/restricted-syntax-selectors.test.ts` via the `RuleTester` helper. Run it and watch it fail for the right reason.
+4. **Add the rule.** Ordinary rules go straight into the preset's `rules` block. Selectors for `kommo/no-restricted-syntax` go through `buildRestrictedSyntaxOptions` in `packages/eslint-config/src/presets/selectors.ts` and are **never** inlined into a preset: flat config _replaces_ per-rule option arrays instead of merging them, so a preset that spells out its own selector list silently drops every selector the base set contributed. The builder is the single source of truth.
+5. **Guard against false positives.** Add a passing case to the relevant `valid.*` fixture (`valid.js`, `valid.ts`, `valid.tsx`) and assert **both** `errorCount === 0` **and** `warningCount === 0`. An errors-only assertion silently misses every `warn`-level rule.
+6. **Regenerate snapshots last**, once, after every targeted test is already green:
+
+   ```bash
+   pnpm --filter @kommo-crm/eslint-config test:snapshot:update
+   ```
+
+   Then read the diff per rule id and account for every new entry: it must trace to a rule you deliberately added, on a fixture line you deliberately wrote. Regenerating early bakes a real regression into the baseline, and a large diff is easy to rubber-stamp.
+
+7. **Update the docs and pick the right bump.** Add the rule to `packages/eslint-config/CHANGELOG.md`, then follow [Sending a pull request](#sending-a-pull-request) and the [semantic versioning](#semantic-versioning) rules above. Note that **a new rule at `error` severity is a breaking change for consumers** — under [Versioning during 0.x](#versioning-during-0x) it ships in a `0.x.0` minor rather than a patch.
+
+One tooling detail: a dependency that is pulled in **by name** rather than by an `import` statement — `@types/react`, referenced only as `"types": ["react"]` in `__tests__/fixtures/tsconfig.json` — is invisible to knip and will be reported as unused. Add it to `ignoreDependencies` in `packages/eslint-config/knip.json`. A dependency you actually `import` should never need that entry; if knip complains about one of those, the import is wrong, not the config.
+
 ## Updating lint snapshots
 
 `packages/eslint-config/__tests__/fixtures/invalid.js.errors.json` and `invalid.tsx.errors.json` are ground-truth snapshots of what ESLint reports when the full preset (`base + typescript + react`) runs against the broad fixtures ported from our core projects. `snapshot.test.ts` fails on any diff.

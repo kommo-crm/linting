@@ -53,3 +53,25 @@ test(
     }
   }
 );
+
+test(
+  'TS-scoped rules never leak into legacy.cjs (no per-file scoping there)',
+  { skip: !existsSync(legacyPath) },
+  () => {
+    const require = createRequire(import.meta.url);
+    const legacy = require(legacyPath) as { rules: Record<string, unknown> };
+
+    const tsOnlyRules = [
+      '@typescript-eslint/explicit-function-return-type',
+      '@typescript-eslint/consistent-type-imports',
+      'import/consistent-type-specifier-style',
+    ];
+
+    for (const key of tsOnlyRules) {
+      assert.ok(
+        !(key in legacy.rules),
+        `TS-scoped rule "${key}" leaked into legacy.cjs — it would fire on every .js file a consumer owns`
+      );
+    }
+  }
+);

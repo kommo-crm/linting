@@ -1,5 +1,19 @@
 [
   {
+    "ruleId": "@typescript-eslint/consistent-type-imports",
+    "line": 2,
+    "column": 1,
+    "severity": 1,
+    "messageId": "someImportsAreOnlyTypes"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 5,
+    "column": 1,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "@typescript-eslint/no-unused-vars",
     "line": 5,
     "column": 10,
@@ -26,6 +40,13 @@
     "column": 7,
     "severity": 2,
     "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 13,
+    "column": 35,
+    "severity": 1,
+    "messageId": "missingReturnType"
   },
   {
     "ruleId": "array-callback-return",
@@ -112,6 +133,13 @@
     "messageId": "unexpected"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 40,
+    "column": 1,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "prefer-const",
     "line": 40,
     "column": 10,
@@ -133,6 +161,13 @@
     "messageId": "limited"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 54,
+    "column": 1,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "@typescript-eslint/no-unused-vars",
     "line": 54,
     "column": 10,
@@ -145,6 +180,13 @@
     "column": 10,
     "severity": 2,
     "messageId": "unexpected"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 63,
+    "column": 1,
+    "severity": 1,
+    "messageId": "missingReturnType"
   },
   {
     "ruleId": "no-empty-function",
@@ -182,6 +224,13 @@
     "messageId": "unusedVar"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 77,
+    "column": 17,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "no-extra-bind",
     "line": 79,
     "column": 3,
@@ -201,6 +250,13 @@
     "column": 9,
     "severity": 2,
     "messageId": "unexpected"
+  },
+  {
+    "ruleId": "default-case",
+    "line": 87,
+    "column": 1,
+    "severity": 2,
+    "messageId": "missingDefaultCase"
   },
   {
     "ruleId": "no-console",
@@ -257,6 +313,13 @@
     "column": 14,
     "severity": 2,
     "messageId": "unsafeRefs"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 107,
+    "column": 17,
+    "severity": 1,
+    "messageId": "missingReturnType"
   },
   {
     "ruleId": "@typescript-eslint/no-unused-vars",
@@ -462,6 +525,13 @@
     "messageId": "useConst"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 173,
+    "column": 17,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "no-useless-return",
     "line": 174,
     "column": 3,
@@ -504,6 +574,13 @@
     "messageId": "useConst"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 181,
+    "column": 16,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "yoda",
     "line": 186,
     "column": 5,
@@ -525,6 +602,13 @@
     "messageId": "expectedBlankLine"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 192,
+    "column": 1,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "@typescript-eslint/no-shadow",
     "line": 193,
     "column": 9,
@@ -537,6 +621,13 @@
     "column": 9,
     "severity": 2,
     "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 197,
+    "column": 1,
+    "severity": 1,
+    "messageId": "missingReturnType"
   },
   {
     "ruleId": "@typescript-eslint/no-unused-vars",
@@ -586,6 +677,13 @@
     "column": 20,
     "severity": 2,
     "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 203,
+    "column": 23,
+    "severity": 1,
+    "messageId": "missingReturnType"
   },
   {
     "ruleId": "@typescript-eslint/no-unused-vars",
@@ -651,11 +749,25 @@
     "messageId": "useConst"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 225,
+    "column": 1,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "@typescript-eslint/no-unused-vars",
     "line": 225,
     "column": 10,
     "severity": 2,
     "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 230,
+    "column": 1,
+    "severity": 1,
+    "messageId": "missingReturnType"
   },
   {
     "ruleId": "@typescript-eslint/no-unused-vars",
@@ -749,6 +861,13 @@
     "messageId": "unusedVar"
   },
   {
+    "ruleId": "consistent-this",
+    "line": 249,
+    "column": 5,
+    "severity": 2,
+    "messageId": "aliasNotAssignedToThis"
+  },
+  {
     "ruleId": "prefer-const",
     "line": 249,
     "column": 5,
@@ -768,6 +887,13 @@
     "column": 5,
     "severity": 2,
     "messageId": "matchVariable"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 255,
+    "column": 11,
+    "severity": 1,
+    "messageId": "missingReturnType"
   },
   {
     "ruleId": "@typescript-eslint/no-shadow",
@@ -812,6 +938,13 @@
     "messageId": "useConst"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 273,
+    "column": 1,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "@typescript-eslint/no-redeclare",
     "line": 273,
     "column": 10,
@@ -833,11 +966,46 @@
     "messageId": "maxComment"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 295,
+    "column": 5,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 296,
+    "column": 7,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 297,
+    "column": 9,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 298,
+    "column": 11,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "max-nested-callbacks",
     "line": 298,
     "column": 11,
     "severity": 2,
     "messageId": "exceed"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 306,
+    "column": 1,
+    "severity": 1,
+    "messageId": "missingReturnType"
   },
   {
     "ruleId": "max-params",
@@ -985,6 +1153,13 @@
     "column": 3,
     "severity": 2,
     "messageId": "unexpectedLonelyIf"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 337,
+    "column": 1,
+    "severity": 1,
+    "messageId": "missingReturnType"
   },
   {
     "ruleId": "@typescript-eslint/no-unused-vars",
@@ -1204,6 +1379,13 @@
     "messageId": "expectedBlankLine"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 395,
+    "column": 1,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "@typescript-eslint/no-redeclare",
     "line": 395,
     "column": 10,
@@ -1274,6 +1456,13 @@
     "messageId": "useConst"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 421,
+    "column": 1,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "@typescript-eslint/no-unused-vars",
     "line": 432,
     "column": 3,
@@ -1328,6 +1517,13 @@
     "column": 11,
     "severity": 2,
     "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 458,
+    "column": 5,
+    "severity": 1,
+    "messageId": "missingReturnType"
   },
   {
     "ruleId": "no-case-declarations",
@@ -1470,6 +1666,13 @@
     "messageId": "unusedVar"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 480,
+    "column": 54,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "@typescript-eslint/no-unused-vars",
     "line": 485,
     "column": 7,
@@ -1484,11 +1687,25 @@
     "messageId": "restrictedSyntax"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 485,
+    "column": 44,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "@typescript-eslint/no-unused-vars",
     "line": 490,
     "column": 7,
     "severity": 2,
     "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 490,
+    "column": 27,
+    "severity": 1,
+    "messageId": "missingReturnType"
   },
   {
     "ruleId": "arrow-body-style",
@@ -1498,18 +1715,11 @@
     "messageId": "expectedBlock"
   },
   {
-    "ruleId": "react/jsx-no-undef",
-    "line": 495,
-    "column": 2,
-    "severity": 2,
-    "messageId": "undefined"
-  },
-  {
     "ruleId": "react/jsx-handler-names",
     "line": 495,
-    "column": 14,
+    "column": 6,
     "severity": 2,
-    "messageId": "badPropKey"
+    "messageId": "badHandlerName"
   },
   {
     "ruleId": "react/hook-use-state",
@@ -1561,6 +1771,13 @@
     "messageId": "unusedVar"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 505,
+    "column": 45,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "@typescript-eslint/no-unused-vars",
     "line": 510,
     "column": 7,
@@ -1589,6 +1806,13 @@
     "messageId": "unusedVar"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 520,
+    "column": 33,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "@typescript-eslint/no-unused-vars",
     "line": 521,
     "column": 21,
@@ -1601,6 +1825,13 @@
     "column": 20,
     "severity": 2,
     "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 525,
+    "column": 16,
+    "severity": 1,
+    "messageId": "missingReturnType"
   },
   {
     "ruleId": "react-you-might-not-need-an-effect/no-derived-state",
@@ -1617,6 +1848,13 @@
     "messageId": "unusedVar"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 534,
+    "column": 38,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "@typescript-eslint/no-unused-vars",
     "line": 535,
     "column": 17,
@@ -1629,6 +1867,13 @@
     "column": 10,
     "severity": 2,
     "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 538,
+    "column": 16,
+    "severity": 1,
+    "messageId": "missingReturnType"
   },
   {
     "ruleId": "react-you-might-not-need-an-effect/no-event-handler",
@@ -1652,6 +1897,20 @@
     "messageId": "unusedVar"
   },
   {
+    "ruleId": "kommo/no-restricted-syntax",
+    "line": 555,
+    "column": 34,
+    "severity": 2,
+    "messageId": "restrictedSyntax"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 555,
+    "column": 71,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "@typescript-eslint/no-unused-vars",
     "line": 557,
     "column": 10,
@@ -1673,6 +1932,13 @@
     "messageId": "unusedVar"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 560,
+    "column": 16,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "react-you-might-not-need-an-effect/no-adjust-state-on-prop-change",
     "line": 561,
     "column": 5,
@@ -1687,11 +1953,32 @@
     "messageId": "unusedVar"
   },
   {
+    "ruleId": "kommo/no-restricted-syntax",
+    "line": 575,
+    "column": 37,
+    "severity": 2,
+    "messageId": "restrictedSyntax"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 575,
+    "column": 77,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "@typescript-eslint/no-unused-vars",
     "line": 577,
     "column": 16,
     "severity": 2,
     "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 579,
+    "column": 16,
+    "severity": 1,
+    "messageId": "missingReturnType"
   },
   {
     "ruleId": "react-you-might-not-need-an-effect/no-pass-live-state-to-parent",
@@ -1701,11 +1988,39 @@
     "messageId": "avoidPassingLiveStateToParent"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 594,
+    "column": 24,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "@typescript-eslint/no-unused-vars",
     "line": 598,
     "column": 7,
     "severity": 2,
     "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "kommo/no-restricted-syntax",
+    "line": 598,
+    "column": 32,
+    "severity": 2,
+    "messageId": "restrictedSyntax"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 598,
+    "column": 67,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 602,
+    "column": 16,
+    "severity": 1,
+    "messageId": "missingReturnType"
   },
   {
     "ruleId": "react-you-might-not-need-an-effect/no-pass-data-to-parent",
@@ -1722,6 +2037,20 @@
     "messageId": "unusedVar"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 610,
+    "column": 41,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 613,
+    "column": 16,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "react-you-might-not-need-an-effect/no-initialize-state",
     "line": 614,
     "column": 5,
@@ -1736,6 +2065,13 @@
     "messageId": "unusedVar"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 621,
+    "column": 37,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "react-you-might-not-need-an-effect/no-empty-effect",
     "line": 622,
     "column": 3,
@@ -1743,11 +2079,32 @@
     "messageId": "avoidEmptyEffect"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 622,
+    "column": 16,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "@typescript-eslint/no-unused-vars",
     "line": 637,
     "column": 7,
     "severity": 2,
     "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "kommo/no-restricted-syntax",
+    "line": 637,
+    "column": 32,
+    "severity": 2,
+    "messageId": "restrictedSyntax"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 637,
+    "column": 67,
+    "severity": 1,
+    "messageId": "missingReturnType"
   },
   {
     "ruleId": "@typescript-eslint/no-unused-vars",
@@ -1764,6 +2121,13 @@
     "messageId": "avoidResettingAllStateWhenAPropChanges"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 641,
+    "column": 16,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "react-you-might-not-need-an-effect/no-adjust-state-on-prop-change",
     "line": 642,
     "column": 5,
@@ -1776,6 +2140,27 @@
     "column": 7,
     "severity": 2,
     "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "kommo/no-restricted-syntax",
+    "line": 656,
+    "column": 31,
+    "severity": 2,
+    "messageId": "restrictedSyntax"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 656,
+    "column": 65,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 660,
+    "column": 16,
+    "severity": 1,
+    "messageId": "missingReturnType"
   },
   {
     "ruleId": "react-you-might-not-need-an-effect/no-pass-ref-to-parent",
@@ -1792,11 +2177,39 @@
     "messageId": "unusedVar"
   },
   {
+    "ruleId": "kommo/no-restricted-syntax",
+    "line": 675,
+    "column": 31,
+    "severity": 2,
+    "messageId": "restrictedSyntax"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 675,
+    "column": 65,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 679,
+    "column": 16,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "react-you-might-not-need-an-effect/no-pass-ref-to-parent",
     "line": 683,
     "column": 7,
     "severity": 1,
     "messageId": "avoidPropCallbackInRefCallback"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 683,
+    "column": 61,
+    "severity": 1,
+    "messageId": "missingReturnType"
   },
   {
     "ruleId": "@typescript-eslint/no-unused-vars",
@@ -1834,11 +2247,25 @@
     "messageId": "unusedVar"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 713,
+    "column": 39,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "@typescript-eslint/no-unused-vars",
     "line": 718,
     "column": 7,
     "severity": 2,
     "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 718,
+    "column": 39,
+    "severity": 1,
+    "messageId": "missingReturnType"
   },
   {
     "ruleId": "@typescript-eslint/no-unused-vars",
@@ -1848,11 +2275,25 @@
     "messageId": "unusedVar"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 723,
+    "column": 41,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "@typescript-eslint/no-unused-vars",
     "line": 728,
     "column": 7,
     "severity": 2,
     "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 728,
+    "column": 41,
+    "severity": 1,
+    "messageId": "missingReturnType"
   },
   {
     "ruleId": "@typescript-eslint/no-unused-vars",
@@ -1862,11 +2303,25 @@
     "messageId": "unusedVar"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 733,
+    "column": 45,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "@typescript-eslint/no-unused-vars",
     "line": 738,
     "column": 7,
     "severity": 2,
     "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 738,
+    "column": 45,
+    "severity": 1,
+    "messageId": "missingReturnType"
   },
   {
     "ruleId": "@typescript-eslint/no-unused-vars",
@@ -1876,11 +2331,25 @@
     "messageId": "unusedVar"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 743,
+    "column": 46,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "@typescript-eslint/no-unused-vars",
     "line": 748,
     "column": 7,
     "severity": 2,
     "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 748,
+    "column": 47,
+    "severity": 1,
+    "messageId": "missingReturnType"
   },
   {
     "ruleId": "@typescript-eslint/no-unused-vars",
@@ -1890,11 +2359,25 @@
     "messageId": "unusedVar"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 753,
+    "column": 49,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "@typescript-eslint/no-unused-vars",
     "line": 758,
     "column": 7,
     "severity": 2,
     "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 758,
+    "column": 50,
+    "severity": 1,
+    "messageId": "missingReturnType"
   },
   {
     "ruleId": "@typescript-eslint/no-unused-vars",
@@ -1904,11 +2387,25 @@
     "messageId": "unusedVar"
   },
   {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 763,
+    "column": 44,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
     "ruleId": "@typescript-eslint/no-unused-vars",
     "line": 768,
     "column": 7,
     "severity": 2,
     "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 768,
+    "column": 44,
+    "severity": 1,
+    "messageId": "missingReturnType"
   },
   {
     "ruleId": "@typescript-eslint/no-unused-vars",
@@ -1951,5 +2448,68 @@
     "column": 34,
     "severity": 2,
     "messageId": "implicitCoercion"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 778,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 778,
+    "column": 46,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
+    "ruleId": "react/jsx-curly-brace-presence",
+    "line": 779,
+    "column": 21,
+    "severity": 2,
+    "messageId": "unnecessaryCurly"
+  },
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "line": 783,
+    "column": 7,
+    "severity": 2,
+    "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "kommo/no-restricted-syntax",
+    "line": 783,
+    "column": 36,
+    "severity": 2,
+    "messageId": "restrictedSyntax"
+  },
+  {
+    "ruleId": "jsdoc/require-jsdoc",
+    "line": 783,
+    "column": 49,
+    "severity": 2,
+    "messageId": "missingJsDoc"
+  },
+  {
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "line": 783,
+    "column": 68,
+    "severity": 1,
+    "messageId": "missingReturnType"
+  },
+  {
+    "ruleId": "react/jsx-no-leaked-render",
+    "line": 784,
+    "column": 16,
+    "severity": 2,
+    "messageId": "noPotentialLeakedRender"
+  },
+  {
+    "ruleId": "react/jsx-handler-names",
+    "line": 792,
+    "column": 24,
+    "severity": 2,
+    "messageId": "badPropKey"
   }
 ]

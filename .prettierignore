@@ -2,4 +2,8 @@ dist
 node_modules
 pnpm-lock.yaml
 coverage
-__tests__/fixtures
+# Lint fixtures are deliberately unformatted — formatting them removes the
+# violations the snapshots assert on. The glob must be **/-prefixed: a pattern
+# containing a slash is anchored to this file's directory, so plain
+# `__tests__/fixtures` would miss packages/*/__tests__/fixtures.
+**/__tests__/fixtures
