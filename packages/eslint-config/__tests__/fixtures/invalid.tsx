@@ -492,7 +492,7 @@ const arrowBodyStyle = () => 'arrowBodyStyle';
 /* REACT */
 
 // Error: react/jsx-handler-names
-<MyComponent handleChange={this.handleChange} />;
+<div onClick={this.doSomething} />;
 
 // Error: react/hook-use-state
 const [isState, setState] = useState<null | number>(null);
@@ -773,3 +773,20 @@ const ComponentWithBorderRadius5px4px = () => {
 const implicitCoercionToBoolean = !!5;
 const implicitCoercionToString = 2 + '';
 const implicitCoercionToNumber = +false;
+
+// Error: react/jsx-curly-brace-presence
+const ComponentWithRedundantCurlyBraces = () => {
+  return <div title={'baz'} />;
+};
+
+// Error: react/jsx-no-leaked-render
+const ComponentWithLeakedRender = ({ items }: { items: string[] }) => {
+  return <div>{items.length && <span />}</div>;
+};
+
+const HandlerNamesComponent = (): null => {
+  return null;
+};
+
+// Error: react/jsx-handler-names (badPropKey — the `on` prefix is missing)
+<HandlerNamesComponent handleChange={this.handleChange} />;

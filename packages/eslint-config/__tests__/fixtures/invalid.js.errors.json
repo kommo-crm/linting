@@ -224,6 +224,13 @@
     "messageId": "unexpected"
   },
   {
+    "ruleId": "default-case",
+    "line": 86,
+    "column": 1,
+    "severity": 2,
+    "messageId": "missingDefaultCase"
+  },
+  {
     "ruleId": "no-console",
     "line": 88,
     "column": 5,
@@ -943,6 +950,13 @@
     "column": 5,
     "severity": 2,
     "messageId": "unusedVar"
+  },
+  {
+    "ruleId": "consistent-this",
+    "line": 242,
+    "column": 5,
+    "severity": 2,
+    "messageId": "aliasNotAssignedToThis"
   },
   {
     "ruleId": "prefer-const",

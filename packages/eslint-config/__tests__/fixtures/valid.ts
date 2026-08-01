@@ -7,4 +7,8 @@ interface User {
 
 const user: User = { id: 1 };
 
-export { user };
+const double = (n: number): number => {
+  return n * 2;
+};
+
+export { user, double };

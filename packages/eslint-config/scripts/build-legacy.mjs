@@ -18,11 +18,11 @@
  */
 import { writeFile, mkdir } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
-import { pathToFileURL } from 'node:url';
+import { fileURLToPath } from 'node:url';
 import { PLUGIN_NAME } from '@kommo-crm/eslint-plugin';
 import { base, typescript, react } from '../dist/index.mjs';
 
-const ROOT = resolve(dirname(new URL(import.meta.url).pathname), '..');
+const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = resolve(ROOT, 'dist/legacy.cjs');
 
 /**
@@ -44,26 +44,49 @@ const LEGACY_PLUGINS = [
  * - kommo/*: the package's custom rules are not exposed as a separate plugin
  *   for ESLint 8. Consumers must wire them manually via a local plugin if needed.
  * - react-you-might-not-need-an-effect/*: plugin requires the ESLint 9+ API.
+ * - import/*: `import` is not in LEGACY_PLUGINS, and emitting rules for an
+ *   undeclared plugin makes ESLint 8 abort at config load.
  */
 const EXCLUDED_PREFIXES = [
   `${PLUGIN_NAME}/`,
   'react-you-might-not-need-an-effect/',
+  'import/',
 ];
+
+/**
+ * Block whose `files` scoping is load-bearing. The legacy .eslintrc is emitted
+ * as one flat `rules` object with no per-file scoping, so folding this block in
+ * would fire its rules on every .js file a consumer owns. ESLint 8 consumers
+ * simply do not get these rules.
+ */
+const TS_ONLY_BLOCK = '@kommo-crm/eslint-config/typescript/ts-only';
 
 const collectRules = (configs) => {
   return Object.assign(
     {},
-    ...configs.map((config) => {
-      return config?.rules ?? {};
-    })
+    ...configs
+      .filter((config) => {
+        return config?.name !== TS_ONLY_BLOCK;
+      })
+      .map((config) => {
+        return config?.rules ?? {};
+      })
   );
 };
 
-const mergedRules = {
-  ...collectRules(base()),
-  ...collectRules(typescript()),
-  ...collectRules(react()),
-};
+const allConfigs = [...base(), ...typescript(), ...react()];
+
+const hasTsOnlyBlock = allConfigs.some((config) => {
+  return config?.name === TS_ONLY_BLOCK;
+});
+
+if (!hasTsOnlyBlock) {
+  throw new Error(
+    `build-legacy: no config block named "${TS_ONLY_BLOCK}" — its TS-scoped rules would leak into the ESLint 8 output. Update TS_ONLY_BLOCK to match src/presets/typescript.ts.`
+  );
+}
+
+const mergedRules = collectRules(allConfigs);
 
 const rules = Object.fromEntries(
   Object.entries(mergedRules).filter(([key]) => {
@@ -98,5 +121,3 @@ await mkdir(dirname(OUT), { recursive: true });
 await writeFile(OUT, body);
 
 console.log(`Wrote ${Object.keys(rules).length} rules → ${OUT}`);
-// Silence the unused-import warning; pathToFileURL kept for potential future dynamic imports.
-void pathToFileURL;

@@ -1,6 +1,7 @@
 import type { Linter } from 'eslint';
 import js from '@eslint/js';
 import stylistic from '@stylistic/eslint-plugin';
+import importPlugin from 'eslint-plugin-import';
 import onlyVar from 'eslint-plugin-only-var';
 import prettierPlugin from 'eslint-plugin-prettier';
 import eslintConfigPrettier from 'eslint-config-prettier';
@@ -33,6 +34,7 @@ export const base = (options?: PresetOptions): Linter.Config[] => [
     name: '@kommo-crm/eslint-config/base/plugins',
     plugins: {
       '@stylistic': stylistic,
+      'import': importPlugin,
       'only-var': onlyVar,
       'prettier': prettierPlugin,
       [PLUGIN_NAME]: kommoPlugin,
@@ -117,6 +119,15 @@ export const base = (options?: PresetOptions): Linter.Config[] => [
       'no-nested-ternary': 'error',
       'no-unneeded-ternary': 'error',
       'no-case-declarations': 'error',
+      'default-case': 'error',
+      'default-case-last': 'error',
+      'consistent-this': ['error', 'self'],
+
+      /**
+       * Warning, not error: config files and stories legitimately need a
+       * default export, and the consumer decides which globs to exempt.
+       */
+      'import/no-default-export': 'warn',
 
       /**
        * Stylistic Issues

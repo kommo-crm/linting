@@ -1,13 +1,11 @@
 import type { Linter } from 'eslint';
 import tseslint from 'typescript-eslint';
 import jsdoc from 'eslint-plugin-jsdoc';
+import importPlugin from 'eslint-plugin-import';
 import type { PresetOptions } from '../index';
 import { PLUGIN_NAME } from '@kommo-crm/eslint-plugin';
 import { applyOverrides } from './shared';
-import {
-  OMIT_TYPE_REFERENCE_SELECTORS,
-  buildRestrictedSyntaxOptions,
-} from './selectors';
+import { TS_PRESET_SELECTORS, buildRestrictedSyntaxOptions } from './selectors';
 
 const TS_FILES = ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts'];
 
@@ -64,6 +62,7 @@ export const typescript = (options?: PresetOptions): Linter.Config[] => [
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-non-null-assertion': 'error',
       '@typescript-eslint/consistent-type-definitions': ['warn', 'interface'],
+      '@typescript-eslint/array-type': ['error', { default: 'array' }],
       '@typescript-eslint/naming-convention': [
         'error',
         { selector: 'typeAlias', format: ['PascalCase'] },
@@ -77,9 +76,51 @@ export const typescript = (options?: PresetOptions): Linter.Config[] => [
        * replaces (not merges) option lists per rule. Must include the
        * param-destructuring selector so it keeps firing on TS files.
        */
-      [`${PLUGIN_NAME}/no-restricted-syntax`]: buildRestrictedSyntaxOptions(
-        OMIT_TYPE_REFERENCE_SELECTORS
-      ),
+      [`${PLUGIN_NAME}/no-restricted-syntax`]:
+        buildRestrictedSyntaxOptions(TS_PRESET_SELECTORS),
+    },
+  },
+  {
+    /**
+     * Scoped to TS files, unlike the block above: these rules match nodes
+     * espree also produces, so on .js they would fire on every function and
+     * every import a consumer owns.
+     */
+    name: '@kommo-crm/eslint-config/typescript/ts-only',
+    files: TS_FILES,
+    /**
+     * `base` registers `import` too, but this block must carry it as well:
+     * `typescript()` is exported on its own, so a TS-only consumer may compose
+     * it without `base()`, and `import/consistent-type-specifier-style` below
+     * would then have no plugin to resolve against. Composing both is safe —
+     * ESLint only rejects a redefinition when the two values are different
+     * references, and both files import the same module.
+     */
+    plugins: {
+      import: importPlugin,
+    },
+    rules: {
+      '@typescript-eslint/explicit-function-return-type': [
+        'warn',
+        {
+          allowTypedFunctionExpressions: false,
+          allowIIFEs: false,
+          allowDirectConstAssertionInArrowFunctions: true,
+          allowConciseArrowFunctionExpressionsStartingWithVoid: true,
+          allowHigherOrderFunctions: false,
+          allowExpressions: false,
+          allowFunctionsWithoutTypeParameters: false,
+        },
+      ],
+      /**
+       * Matched pair with `import/consistent-type-specifier-style` below:
+       * split the styles and the two autofixers undo each other.
+       */
+      '@typescript-eslint/consistent-type-imports': [
+        'warn',
+        { fixStyle: 'inline-type-imports' },
+      ],
+      'import/consistent-type-specifier-style': ['warn', 'prefer-inline'],
     },
   },
   {

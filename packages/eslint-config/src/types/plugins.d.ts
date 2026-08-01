@@ -68,6 +68,13 @@ declare module 'eslint-config-prettier' {
   export default config;
 }
 
+declare module 'eslint-plugin-import' {
+  import type { ESLint } from 'eslint';
+
+  const plugin: ESLint.Plugin;
+  export default plugin;
+}
+
 declare module 'eslint-plugin-jsdoc' {
   import type { ESLint } from 'eslint';
 

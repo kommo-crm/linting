@@ -13,10 +13,10 @@ const require = createRequire(import.meta.url);
  * the dependency does not, the package lies about what it supports — which is
  * exactly how consumers hit ERESOLVE (eslint) or a runtime crash (typescript).
  *
- * This ia a curated carrier list, not a full-closure walk — just our direct
- * dependencies. The typescript ceiling is carried by `typescript-eslint`, which
- * declares the peer directly. Add a carrier here if a future dep introduces a
- * peer we bundle that isn't already one of our direct dependencies.
+ * This ia a curated carrier list, not a full-closure walk — our direct
+ * dependencies plus the plugins we declare as peers (a plugin the consumer
+ * installs still has to accept the eslint version we advertise). The typescript
+ * ceiling is carried by `typescript-eslint`, which declares the peer directly.
  */
 
 const ownPkg = require('../package.json') as {
@@ -25,8 +25,17 @@ const ownPkg = require('../package.json') as {
 };
 
 const ownPeers = ownPkg.peerDependencies ?? {};
-const carriers = Object.keys(ownPkg.dependencies ?? {});
 const TOOLS = ['eslint', 'typescript'] as const;
+
+/**
+ * The tools themselves are what we check, never carriers of their own peer.
+ */
+const carriers = [
+  ...Object.keys(ownPkg.dependencies ?? {}),
+  ...Object.keys(ownPeers),
+].filter((name) => {
+  return !(TOOLS as readonly string[]).includes(name);
+});
 
 /**
  * Read a dependency's package.json, tolerating packages that don't export it.

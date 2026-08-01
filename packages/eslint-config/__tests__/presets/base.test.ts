@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { base } from '../../src';
-import { disablePrettier, lintFixture } from '../helpers/lint';
+import { disablePrettier, lintFixture, runEslint } from '../helpers/lint';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const fixturesDir = resolve(here, '..', 'fixtures');
@@ -32,6 +32,23 @@ test('base preset: invalid-base.js — expected violations present', async () =>
   assert.ok(uniqueIds.has('no-var'), 'no-var must fire');
   assert.ok(uniqueIds.has('eqeqeq'), 'eqeqeq must fire');
   assert.ok(uniqueIds.has('no-alert'), 'no-alert must fire');
+  assert.ok(uniqueIds.has('default-case'), 'default-case must fire');
+  assert.ok(uniqueIds.has('default-case-last'), 'default-case-last must fire');
+  assert.ok(uniqueIds.has('consistent-this'), 'consistent-this must fire');
+});
+
+test('base preset: invalid-base.js — import/no-default-export warns', async () => {
+  const result = (await runEslint(
+    [...base(), disablePrettier],
+    resolve(fixturesDir, 'invalid-base.js')
+  ))!;
+  const reported = result.messages.filter((message) => {
+    return message.ruleId === 'import/no-default-export';
+  });
+
+  assert.equal(reported.length, 1, 'import/no-default-export must fire once');
+  assert.equal(reported[0]!.severity, 1, 'severity must be warning, not error');
+  assert.ok(result.warningCount >= 1, 'the report must land in warningCount');
 });
 
 test('base preset: invalid-export-all.js — kommo/no-export-all fires', async () => {

@@ -43,6 +43,15 @@ export const react = (options?: PresetOptions): Linter.Config[] => [
         },
       ],
       'react/hook-use-state': 'error',
+      /**
+       * `children: 'ignore'` — string children are often intentionally wrapped
+       * in braces to survive `prettier` reflow.
+       */
+      'react/jsx-curly-brace-presence': [
+        'error',
+        { props: 'never', children: 'ignore' },
+      ],
+      'react/jsx-no-leaked-render': 'error',
       'react/boolean-prop-naming': [
         'error',
         {
